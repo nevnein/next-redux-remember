@@ -1,0 +1,33 @@
+{
+  "name": "next-redux-remember",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "prettier": "prettier --write ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@next/env": "^14.0.2",
+    "@reduxjs/toolkit": "^1.9.7",
+    "next": "^12.3.4",
+    "next-redux-wrapper": "^8.1.0",
+    "react-redux": "^8.1.3",
+    "redux-remember": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "^14.0.2",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.1.0",
+    "typescript": "4.7"
+  }
+}
