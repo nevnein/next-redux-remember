@@ -16,11 +16,9 @@ const sliceFromServer = createSlice({
   },
   extraReducers: (builder) =>
     builder.addCase(HYDRATE, (state, action) => {
-      return {
-        ...state,
-        // @ts-ignore
-        ...action.payload,
-      };
+      // @ts-ignore
+      state.value = action.payload.fromServer.value;
+      return state;
     }),
 });
 
