@@ -1,8 +1,10 @@
-import { increment, useTypedSelector, wrapper } from 'lib/store';
+import { increment, incrementClient, useTypedSelector, wrapper } from 'lib/store';
+import { useDispatch } from 'react-redux';
 
 const Page = () => {
   const serverState = useTypedSelector((state) => state.fromServer.value);
   const clientState = useTypedSelector((state) => state.fromClient.value);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -13,6 +15,11 @@ const Page = () => {
 
       <h2>Client</h2>
       <p>{clientState}</p>
+      <p>
+        <button onClick={() => dispatch(incrementClient())}>
+          Increment client
+        </button>
+      </p>
     </div>
   );
 };

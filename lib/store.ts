@@ -30,11 +30,13 @@ const sliceFromClient = createSlice({
     value: 0,
   },
   reducers: {
-    increment: (state) => {
+    incrementClient: (state) => {
       state.value += 1;
     },
   },
 });
+
+export const { incrementClient } = sliceFromClient.actions;
 
 const rootReducer = combineReducers({
   fromServer: sliceFromServer.reducer,
@@ -44,17 +46,17 @@ const rootReducer = combineReducers({
 const enhancer = rememberEnhancer(
   // shim to emulate local storage on the server
   Persist(StorageKind.local),
-  ['sliceFromClient'],
+  ['fromClient'],
   { prefix: '~' }
 );
 
-export const createStore = () =>
-  configureStore({
-    reducer: rememberReducer(rootReducer) as typeof rootReducer,
-    // reducer: rootReducer,
-    devTools: process.env.NODE_ENV !== 'production',
-    enhancers: [enhancer],
-  });
+let storeInstance = configureStore({
+  reducer: rememberReducer(rootReducer) as typeof rootReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+  enhancers: [enhancer],
+});
+
+export const createStore = () => storeInstance; 
 
 export type AppStore = ReturnType<typeof createStore>;
 export type RootState = ReturnType<AppStore['getState']>;
