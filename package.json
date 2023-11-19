@@ -18,7 +18,7 @@
     "next": "^12.3.4",
     "next-redux-wrapper": "^8.1.0",
     "react-redux": "^8.1.3",
-    "redux-remember": "^4.0.4"
+    "redux-remember": "^4.2.1"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

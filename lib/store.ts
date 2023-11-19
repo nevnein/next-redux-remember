@@ -47,16 +47,17 @@ const enhancer = rememberEnhancer(
   // shim to emulate local storage on the server
   Persist(StorageKind.local),
   ['fromClient'],
-  { prefix: '~' }
+  {
+    prefix: '~',
+    initActionType: HYDRATE
+  }
 );
 
-let storeInstance = configureStore({
+export const createStore = () => configureStore({
   reducer: rememberReducer(rootReducer) as typeof rootReducer,
   devTools: process.env.NODE_ENV !== 'production',
   enhancers: [enhancer],
-});
-
-export const createStore = () => storeInstance; 
+});; 
 
 export type AppStore = ReturnType<typeof createStore>;
 export type RootState = ReturnType<AppStore['getState']>;
